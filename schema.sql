@@ -10,7 +10,7 @@ CREATE TABLE Users(
     password VARCHAR(255) NOT NULL,
     email VARCHAR(150) NOT NULL,
     role VARCHAR(50) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Contacts Table
