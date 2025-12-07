@@ -14,6 +14,7 @@ requireLogin();
 <body>
     <?php include 'header.php'; ?>    
     <div class="main-container">
+        <?php include 'sidebar.php'; ?>
         
         <div class="content">
             <div class="content-header">
