@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once '../database/config.php';
 
 // Destroy all session data
 session_unset();

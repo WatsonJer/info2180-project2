@@ -19,7 +19,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </li>
             <?php endif; ?>
             <li>
-                <a href="logout.php">🚪 Logout</a>
+                <a href="../login/logout.php">🚪 Logout</a>
             </li>
         </ul>
     </nav>

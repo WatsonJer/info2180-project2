@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once '../database/config.php';
 
 $error = '';
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['firstname'] = $user['firstname'];
             $_SESSION['lastname'] = $user['lastname'];
             $_SESSION['role'] = $user['role'];
-            header('Location: dashboard.php');
+            header('Location: ../dashboard/dashboard.php');
             exit();
         } else {
             $error = 'Invalid email or password';
