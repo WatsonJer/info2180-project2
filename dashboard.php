@@ -12,7 +12,7 @@ requireLogin();
     <script src="ajax.js"></script>
 </head>
 <body>
-    
+    <?php include 'header.php'; ?>    
     <div class="main-container">
         
         <div class="content">
