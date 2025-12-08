@@ -1,4 +1,5 @@
 <?php
+//You will probably need to edit the add_contact.php link if you add another file
 require_once '../database/config.php';
 requireLogin();
 ?>
@@ -19,7 +20,7 @@ requireLogin();
         <div class="content">
             <div class="content-header">
                 <h2>Dashboard</h2>
-                <a href="add_contact.php" class="btn-primary">+ Add Contact</a>
+                <a href="add_contact.php" class="btn-primary">+ Add Contact</a> <!-- Right here-->
             </div>
             
             <div class="filter-bar">

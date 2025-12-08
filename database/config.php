@@ -1,4 +1,5 @@
 <?php
+//This file is needed at the top of every page that is displayed to the user
 // Database configuration
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
@@ -38,7 +39,7 @@ function isAdmin() {
 // Redirect if not logged in
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: login.php');
+        header('Location: ../login/login.php');
         exit();
     }
 }
@@ -47,7 +48,7 @@ function requireLogin() {
 function requireAdmin() {
     requireLogin();
     if (!isAdmin()) {
-        header('Location: dashboard.php');
+        header('Location: ../dashboard/dashboard.php');
         exit();
     }
 }
