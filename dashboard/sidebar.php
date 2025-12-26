@@ -8,8 +8,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <li class="<?= $currentPage === 'dashboard.php' ? 'active' : '' ?>">
                 <a href="../dashboard/dashboard.php">🏠 Home</a>
             </li>
-            <li class="<?= $currentPage === 'add_contact.php' ? 'active' : '' ?>">
-                <a href="add_contact.php">➕ New Contact</a><!-- Right here-->
+            <li class="<?= $currentPage === 'addContact.php' ? 'active' : '' ?>">
+                <a href="../contacts/addContact.php">➕ New Contact</a><!-- Right here-->
             </li>
             <?php if (isAdmin()): ?>
                 <li class="<?= $currentPage === 'users.php' ? 'active' : '' ?>">
