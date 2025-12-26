@@ -101,6 +101,19 @@ body {
   background-color: #5568d3;
 }
 
+/* Disabled state for primary button */
+.btn-primary:disabled {
+  background-color: #cfcfcf;
+  color: #6c6c6c;
+  cursor: not-allowed;
+}
+
+/* Disabled select styling */
+.form-group select:disabled {
+  background-color: #f0f0f0;
+  color: #777;
+}
+
 .btn-link {
   color: #667eea;
   text-decoration: none;
