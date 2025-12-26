@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="content">
             <h2>New Contact</h2>
             
-            <div id="form-messages">
+            <div id="form-messages" role="status" aria-live="polite">
                 <?php if (isset($error)): ?>
                     <div class="error-message"><?= htmlspecialchars($error) ?></div>
                 <?php endif; ?>
@@ -110,12 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
             </div>
             
-            <form method="POST" action="addContact.php" class="form-horizontal">
+            <form id="contact-form" method="POST" action="addContact.php" class="form-horizontal">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <select id="title" name="title" required>
-                        <option value="Member">Mr.</option>
-                        <option value="Admin">Mrs.</option>
+                        <option value="Mr">Mr.</option>
+                        <option value="Mrs">Mrs.</option>
                     </select>
                 </div>
                 <div class="form-row">
@@ -171,9 +171,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php endif; ?>
                     </select>
                 </div>
-                <button type="submit" class="btn-primary" <?= $disableSave ? 'disabled' : '' ?>>Save</button>
+                <button id="save-btn" type="submit" class="btn-primary" <?= $disableSave ? 'disabled' : '' ?>>Save</button>
             </form>
         </div>
     </div>
+    <script src="addContact.js"></script>
 </body>
 </html>

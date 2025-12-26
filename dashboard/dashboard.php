@@ -10,7 +10,7 @@ requireLogin();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Dolphin CRM</title>
     <link rel="stylesheet" href="../styles.css">
-    <script src="../ajax.js"></script>
+    <script src="dashboardContacts.js" defer></script>
 </head>
 <body>
     <?php include 'header.php'; ?>    
@@ -20,7 +20,7 @@ requireLogin();
         <div class="content">
             <div class="content-header">
                 <h2>Dashboard</h2>
-                <a href="add_contact.php" class="btn-primary">+ Add Contact</a> <!-- Right here-->
+                <a href="../contacts/addContact.php" class="btn-primary">+ Add Contact</a> <!-- Right here-->
             </div>
             
             <div class="filter-bar">

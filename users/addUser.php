@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
             </div>
             
-            <form method="POST" action="addUser.php" class="form-horizontal">
+            <form method="POST" action="addUser.php" class="form-horizontal ajax-form" data-reset-on-success="1">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstname">First Name</label>
