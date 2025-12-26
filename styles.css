@@ -233,3 +233,153 @@ body {
   color: white;
   border-color: #667eea;
 }
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: 1rem 1.25rem; /* increased spacing for readability */
+  border-bottom: 1px solid #e9eef6; /* slightly stronger divider */
+  text-align: left;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.table thead th {
+  background-color: #f7f9fc;
+  color: #2c3e50;
+  font-weight: 600;
+  border-bottom: 2px solid #e6e9ef;
+}
+
+.table tbody tr {
+  transition: background-color 0.15s ease, transform 0.08s ease;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #fbfcfe;
+}
+
+.table tbody tr:hover {
+  background-color: #f6f9ff;
+  transform: translateY(-1px);
+}
+
+.table .actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.success-message {
+  color: #155724;
+  background: #d4edda;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: #721c24;
+  background: #f8d7da;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Table visual polish */
+.table-responsive {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+
+.table-container {
+  padding: 0.5rem;
+}
+
+.table th.id-col,
+.table td.id-col {
+  width: 60px;
+}
+
+.table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2ff;
+  color: #3b3f9a;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.role-badge.role-admin { background: #ffe9e6; color: #a12d2d; }
+.role-badge.role-member { background: #eefaf3; color: #1f7a3a; }
+
+.btn-small {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-small.edit { background: #eef2ff; color: #3446d6; border-color: #e6e9ff; }
+.btn-small.delete { background: #fff2f2; color: #b02a37; border-color: #ffdfe0; }
+
+/* Responsive: convert rows to cards on narrow screens */
+@media (max-width: 760px) {
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table tr { margin-bottom: 0.9rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(44,62,80,0.04); background: white; padding: 0.75rem; }
+  .table td { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border: none; }
+  .table td::before { content: attr(data-label); font-weight: 600; color: #667; margin-right: 0.5rem; }
+  .table td[data-label="Email"] { word-break: break-word; max-width: 60%; }
+  .table .actions { margin-top: 0.5rem; display: flex; gap: 0.5rem; }
+}
+
+@media (min-width: 761px) {
+  .table th, .table td { white-space: nowrap; }
+
+  /* Column width helpers */
+  .table th.id-col, .table td.id-col { width: 60px; }
+  .table th.first-col, .table td.first-col { min-width: 140px; }
+  .table th.last-col, .table td.last-col { min-width: 140px; }
+  .table th.email-col, .table td.email-col { min-width: 240px; }
+  .table th.role-col, .table td.role-col { min-width: 100px; }
+  .table th.created-col, .table td.created-col { min-width: 140px; }
+
+  .avatar { margin-right: 0.6rem; }
+}

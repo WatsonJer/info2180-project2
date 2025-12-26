@@ -24,34 +24,39 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h2>Users</h2>
             <p><a class="btn-primary" href="addUser.php">Add New User</a></p>
 
+            <div class="table-responsive table-container">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Created</th>
+                        <th class="id-col">ID</th>
+                        <th class="first-col">First Name</th>
+                        <th class="last-col">Last Name</th>
+                        <th class="email-col">Email</th>
+                        <th class="role-col">Role</th>
+                        <th class="created-col">Created</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if ($users): ?>
                         <?php foreach ($users as $u): ?>
                             <tr>
-                                <td><?= htmlspecialchars($u['id']) ?></td>
-                                <td><?= htmlspecialchars($u['firstname']) ?></td>
-                                <td><?= htmlspecialchars($u['lastname']) ?></td>
-                                <td><?= htmlspecialchars($u['email']) ?></td>
-                                <td><?= htmlspecialchars($u['role']) ?></td>
-                                <td><?= htmlspecialchars($u['created_at'] ?? '') ?></td>
+                                <td class="id-col" data-label="ID"><?= htmlspecialchars($u['id']) ?></td>
+                                <td class="first-col" data-label="First Name">
+                                    <span class="avatar"><?php echo strtoupper(substr($u['firstname'],0,1) . substr($u['lastname'],0,1)); ?></span>
+                                    <?= htmlspecialchars($u['firstname']) ?>
+                                </td>
+                                <td class="last-col" data-label="Last Name"><?= htmlspecialchars($u['lastname']) ?></td>
+                                <td class="email-col" data-label="Email"><?= htmlspecialchars($u['email']) ?></td>
+                                <td class="role-col" data-label="Role"><span class="role-badge role-<?= strtolower(htmlspecialchars($u['role'])) ?>"><?= htmlspecialchars($u['role']) ?></span></td>
+                                <td class="created-col" data-label="Created"><?php echo htmlspecialchars(isset($u['created_at']) ? date('M j, Y', strtotime($u['created_at'])) : ''); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="6">No users found.</td></tr>
+                            <tr><td colspan="6">No users found.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
+                </div>
         </div>
     </div>
 </body>
