@@ -12,8 +12,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a href="../contacts/addContact.php">➕ New Contact</a><!-- Right here-->
             </li>
             <?php if (isAdmin()): ?>
-                <li class="<?= $currentPage === 'users.php' ? 'active' : '' ?>">
-                    <a href="users.php">👥 Users</a><!-- Right here-->
+                <li class="<?= $currentPage === 'listUsers.php' ? 'active' : '' ?>">
+                    <a href="../users/listUsers.php">👥 Users</a><!-- Right here-->
                 </li>
                 <li class="<?= $currentPage === 'addUser.php' ? 'active' : '' ?>">
                     <a href="../users/addUser.php">➕ Add User</a>
