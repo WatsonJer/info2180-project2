@@ -5,8 +5,8 @@ requireAdmin();
 $isAjax = isset($_POST['ajax']) && $_POST['ajax'] === '1';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
-    $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+    $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING));
+    $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING));
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'] ?? '';
     $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Validate inputs
     if (!$firstname || !$lastname || !$email || !$password || !$role) {
-        $response['message'] = 'All fields are required';
+        $response['message'] = 'All fields are required.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $response['message'] = 'Invalid email address';
+        $response['message'] = 'Invalid email address.';
     } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $password)) {
-        $response['message'] = 'Password must be at least 8 characters and contain at least one number, one letter, and one capital letter';
+        $response['message'] = 'Password must be at least 8 characters with 1 number, 1 letter, and 1 capital letter.';
     } elseif (!in_array($role, ['Admin', 'Member'])) {
-        $response['message'] = 'Invalid role selected';
+        $response['message'] = 'Invalid role selected.';
     } else {
         $conn = getDBConnection();
         
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("SELECT id FROM Users WHERE email = ?");
         $stmt->execute([$email]);
         if ($stmt->fetch()) {
-            $response['message'] = 'Email already exists';
+            $response['message'] = 'Email already exists.';
         } else {
             // Hash password and insert user
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $response['success'] = true;
                 $response['message'] = 'User added successfully!';
             } else {
-                $response['message'] = 'Failed to add user';
+                $response['message'] = 'Failed to add user.';
             }
         }
     }
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User - Dolphin CRM</title>
     <link rel="stylesheet" href="../styles.css">
-    <script src="../ajax.js"></script>
+    <script src="addUser.js"></script>
 </head>
 <body>
     <?php include '../dashboard/header.php'; ?>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="content">
             <h2>New User</h2>
             
-            <div id="form-messages">
+            <div id="form-messages" role="status" aria-live="polite">
                 <?php if (isset($error)): ?>
                     <div class="error-message"><?= htmlspecialchars($error) ?></div>
                 <?php endif; ?>
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
             </div>
             
-            <form method="POST" action="addUser.php" class="form-horizontal ajax-form" data-reset-on-success="1">
+            <form id="user-form" method="POST" action="addUser.php" class="form-horizontal">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstname">First Name</label>
@@ -114,13 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group">
                     <label for="role">Role</label>
                     <select id="role" name="role" required>
-                        <option value="">Select a role</option>
+                        <option value="" disabled selected>Select a role</option>
                         <option value="Member">Member</option>
                         <option value="Admin">Admin</option>
                     </select>
                 </div>
                 
-                <button type="submit" class="btn-primary">Save</button>
+                <button id="save-btn" type="submit" class="btn-primary">Save</button>
             </form>
         </div>
     </div>
