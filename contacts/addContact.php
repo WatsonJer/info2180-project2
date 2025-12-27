@@ -1,6 +1,6 @@
 <?php
 require_once '../database/config.php';
-requireAdmin();
+requireLogin();
 
 $conn = getDBConnection();
 $stmt = $conn->prepare("SELECT id, firstname, lastname, email, role, created_at FROM Users ORDER BY created_at DESC");
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User - Dolphin CRM</title>
+    <title>Add Contact - Dolphin CRM</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
